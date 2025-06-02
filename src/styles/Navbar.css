@@ -1,0 +1,12 @@
+h2 {
+  font-size: 2rem;
+  color: beige;
+  text-decoration: underline;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(160, 159, 159);
+}

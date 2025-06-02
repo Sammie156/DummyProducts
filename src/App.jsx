@@ -1,27 +1,30 @@
 import { useState, useEffect } from "react";
 import Product from "./components/Product";
 import "./index.css";
+import Navbar from "./components/Navbar";
 
 const URL = "https://dummyjson.com/products";
+let query = "/";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        setLoading(true);
-        const response = await fetch(URL);
-        const data = await response.json();
+  async function fetchProducts() {
+    try {
+      setLoading(true);
+      const response = await fetch(`${URL}${query}`);
+      const data = await response.json();
 
-        setProducts(data.products);
-      } catch (error) {
-        console.error(error.message);
-      } finally {
-        setLoading(false);
-      }
+      setProducts(data.products);
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      setLoading(false);
     }
+  }
+
+  useEffect(() => {
     fetchProducts();
   }, []);
 
@@ -38,34 +41,15 @@ function App() {
   ));
 
   function onInputChange(event) {
-    const newProducts = products.filter((product) =>
-      product.title.startsWith(event.target.value)
-    );
+    query = "/search?q="
+    query = query + event.target.value;
 
-    productsList = newProducts.map((product) => (
-      <Product
-        name={product.title}
-        key={product.id}
-        id={product.id}
-        image={product.images[0]}
-        price={product.price}
-        category={product.category}
-      />
-    ));
+    fetchProducts();
   }
 
   return (
     <>
-      <h1>Product Page</h1>
-      <br />
-      {/* <div class="search">
-        <input type="text"
-               placeholder="Search Items"
-               size="30"
-               className="search-bar"
-               onChange={onInputChange}/>
-        <button>Search</button>
-      </div> */}
+      <input type="text" placeholder="Search" onChange={onInputChange} />
       {loading ? (
         <div className="loader"></div>
       ) : (
