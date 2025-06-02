@@ -9,7 +9,7 @@ function Product(props) {
 
       <p className="product-price">${props.price}</p>
       <div>
-        <p className="product-cat">{props.category}</p>
+        <p className="product-cat">Category: {props.category}</p>
       </div>
     </div>
   );
