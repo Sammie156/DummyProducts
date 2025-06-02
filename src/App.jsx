@@ -16,12 +16,11 @@ function App() {
       .catch((error) => console.error("Fetching data error", error.message));
   }, []);
 
-  console.log(products);
-
   const productsList = products.map(product => (
     <Product name={product.title} 
              key={product.id} 
              id={product.id}
+             image={product.images[0]}
              description={product.description}
              price={product.price}
              category={product.category}/>
@@ -30,7 +29,7 @@ function App() {
   return (
     <>
       <h1>Product Page</h1>
-      {productsList.map(product => product)}
+      <span class="product-holder">{productsList.map(product => product)}</span>
     </>
   );
 }

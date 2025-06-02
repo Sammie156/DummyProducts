@@ -2,12 +2,13 @@ import '../styles/Product.css';
 
 function Product(props) {
   return (
-    <div class="product-card">
-      <h3 class="product-name">{props.name}</h3>
-      <p class="product-desc">{props.description}</p>
+    <div className="product-card">
+      <h3 className="product-name">{props.name}</h3>
+      <img className="product-image" src={props.image} alt={props.name} />
+      <p className="product-desc">{props.description}</p>
 
-      <p class="product-price">${props.price}</p>
-      <p class="product-cat">{props.category}</p>
+      <p className="product-price">${props.price}</p>
+      <p className="product-cat">{props.category}</p>
     </div>
   );
 }

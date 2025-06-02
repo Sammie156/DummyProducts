@@ -1,6 +1,19 @@
 h1 {
     text-align: center;
+    font-size: 3rem;
+    color: beige;
+    text-decoration: underline;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.product-holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    border: 1px;
+    width: 50%;
 }
 
 body {
+    background-color: rgb(24, 67, 122);
 }

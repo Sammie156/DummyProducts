@@ -1,8 +1,22 @@
 .product-card {
     width: 450px;
-    height: max-content;
+    height: fit-content;
 
-    background-color: bisque;
+    background-color:rgb(81, 137, 209);
+    transition: 0.2s ease;
+}
+
+.product-image {
+    margin: 0px 100px;
+    width: 200px;
+    height: 200px;
+}
+
+.product-card:hover {
+    filter: drop-shadow(0 0 0.75rem crimson);
+    border-radius: 2px;
+    border-color: azure;
+    background-color: rgb(145, 185, 237);
 }
 
 .product-cat {
@@ -23,6 +37,7 @@
 }
 
 .product-price {
+    font-size: 1.5rem;
     text-align: center;
     color: green;
 }
