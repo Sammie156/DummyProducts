@@ -1,35 +1,60 @@
 h1 {
-    text-align: center;
-    font-size: 3rem;
-    color: beige;
-    text-decoration: underline;
-    font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  font-size: 3rem;
+  color: beige;
+  text-decoration: underline;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .search-bar {
-    font-size: 1rem;
-    text-align: center;
-    padding: 20px;
-    margin: 10px 40%;
+  font-size: 1rem;
+  text-align: center;
+  padding: 20px;
+  margin: 10px 40%;
+}
+
+.loader {
+  display: grid;
+  margin: 0 47%;
+  width: 60px;
+  aspect-ratio: 2;
+  --_g: no-repeat radial-gradient(circle closest-side, #000 90%, #0000);
+  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 50%;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
 }
 
 .search {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-    border: 1px;
-    width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  border: 1px;
+  width: 50%;
 }
 
 .product-holder {
-    margin: 0px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
-    border: 1px;
-    width: 50%;
+  margin: 0px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  border: 1px;
+  width: 50%;
 }
 
 body {
-    background-color: rgb(24, 67, 122);
+  background-color: rgb(24, 67, 122);
 }

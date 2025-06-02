@@ -6,36 +6,51 @@ const URL = "https://dummyjson.com/products";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(URL)
-      .then((response) => response.json())
-      .then((data) => {
+    async function fetchProducts() {
+      try {
+        setLoading(true);
+        const response = await fetch(URL);
+        const data = await response.json();
+
         setProducts(data.products);
-      })
-      .catch((error) => console.error("Fetching data error", error.message));
+      } catch (error) {
+        console.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProducts();
   }, []);
 
-  let productsList = products.map(product => (
-    <Product name={product.title} 
-             key={product.id} 
-             id={product.id}
-             image={product.images[0]}
-             description={product.description}
-             price={product.price}
-             category={product.category}/>
+  let productsList = products.map((product) => (
+    <Product
+      name={product.title}
+      key={product.id}
+      id={product.id}
+      image={product.images[0]}
+      description={product.description}
+      price={product.price}
+      category={product.category}
+    />
   ));
 
   function onInputChange(event) {
-    const newProducts = products.filter(product => product.title.startsWith(event.target.value));
+    const newProducts = products.filter((product) =>
+      product.title.startsWith(event.target.value)
+    );
 
-    productsList = newProducts.map(product => (
-      <Product name={product.title}
-               key={product.id}
-               id={product.id}
-               image={product.images[0]}
-               price={product.price}
-               category={product.category}/>
+    productsList = newProducts.map((product) => (
+      <Product
+        name={product.title}
+        key={product.id}
+        id={product.id}
+        image={product.images[0]}
+        price={product.price}
+        category={product.category}
+      />
     ));
   }
 
@@ -51,7 +66,13 @@ function App() {
                onChange={onInputChange}/>
         <button>Search</button>
       </div> */}
-      <span className="product-holder">{productsList.map(product => product)}</span>
+      {loading ? (
+        <div className="loader"></div>
+      ) : (
+        <span className="product-holder">
+          {productsList.map((product) => product)}
+        </span>
+      )}
     </>
   );
 }
