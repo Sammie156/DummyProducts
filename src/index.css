@@ -13,6 +13,14 @@ h1 {
     margin: 10px 40%;
 }
 
+.search {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    border: 1px;
+    width: 50%;
+}
+
 .product-holder {
     margin: 0px 40px;
     display: grid;
