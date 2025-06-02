@@ -1,8 +1,10 @@
 .product-card {
     width: 450px;
     height: fit-content;
+    background: inherit;
+    border-color: aqua;
+    backdrop-filter: blur(10px);
 
-    background-color:rgb(81, 137, 209);
     transition: 0.2s ease;
 }
 
@@ -13,8 +15,9 @@
 }
 
 .product-card:hover {
-    filter: drop-shadow(0 0 0.75rem crimson);
+    transform: scale(1.05);
     border-radius: 2px;
+    border-width: 10px;
     border-color: azure;
     background-color: rgb(145, 185, 237);
 }

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Product from "./components/Product";
 import "./index.css";
-import Navbar from "./components/Navbar";
 
 const URL = "https://dummyjson.com/products";
 let query = "/";
+const limit = "";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -13,7 +13,7 @@ function App() {
   async function fetchProducts() {
     try {
       setLoading(true);
-      const response = await fetch(`${URL}${query}`);
+      const response = await fetch(`${URL}${query}${limit}`);
       const data = await response.json();
 
       setProducts(data.products);
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <input type="text" placeholder="Search" onChange={onInputChange} />
+      <input type="text" className="search-bar" placeholder="Search" onChange={onInputChange} />
       {loading ? (
         <div className="loader"></div>
       ) : (
@@ -57,6 +57,7 @@ function App() {
           {productsList.map((product) => product)}
         </span>
       )}
+      
     </>
   );
 }
