@@ -6,6 +6,13 @@ h1 {
     font-family: 'Courier New', Courier, monospace;
 }
 
+.search-bar {
+    font-size: 1rem;
+    text-align: center;
+    padding: 20px;
+    margin: 10px 40%;
+}
+
 .product-holder {
     margin: 0px 40px;
     display: grid;

@@ -16,20 +16,50 @@ function App() {
       .catch((error) => console.error("Fetching data error", error.message));
   }, []);
 
-  const productsList = products.map(product => (
-    <Product name={product.title} 
-             key={product.id} 
-             id={product.id}
-             image={product.images[0]}
-             description={product.description}
-             price={product.price}
-             category={product.category}/>
-  ))
+  let productsList = products.map((product) => (
+    <Product
+      name={product.title}
+      key={product.id}
+      id={product.id}
+      image={product.images[0]}
+      description={product.description}
+      price={product.price}
+      category={product.category}
+    />
+  ));
+
+  // TODO: Find a way to output the new Product List
+  function onInputChange(event) {
+    const newProducts = products.filter((product) =>
+      product.title.startsWith(event.target.value)
+    );
+
+    productsList = newProducts.map((product) => (
+      <Product
+        name={product.title}
+        key={product.id}
+        id={product.id}
+        image={product.images[0]}
+        price={product.price}
+        category={product.category}
+      />
+    ));
+  }
 
   return (
     <>
       <h1>Product Page</h1>
-      <span class="product-holder">{productsList.map(product => product)}</span>
+      <br />
+      <input
+        type="text"
+        placeholder="Search Items"
+        size="30"
+        className="search-bar"
+        onChange={onInputChange}
+      />
+      <span className="product-holder">
+        {productsList.map((product) => product)}
+      </span>
     </>
   );
 }
