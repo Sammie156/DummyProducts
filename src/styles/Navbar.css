@@ -1,12 +1,26 @@
 h2 {
+  margin: 0px;
+  font-size: 2.3rem;
+}
+
+.cross-button {
   font-size: 2rem;
-  color: beige;
-  text-decoration: underline;
-  font-family: "Courier New", Courier, monospace;
+  margin-right: 5px;
+  background-color: white;
+}
+
+.search-bar {
+  font-size: 2rem;
+  text-align: center;
+  height: max-content;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(160, 159, 159);
+  height: fit-content;
+  display: flex;
+  color: beige;
+  backdrop-filter: blur(10px);
+  justify-content: space-between;
+  background-color: rgb(59, 59, 59);
+  margin-bottom: 20px;
 }

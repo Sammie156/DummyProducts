@@ -1,24 +1,28 @@
 import { useState, useEffect } from "react";
 import Product from "./components/Product";
+import Navbar from "./components/Navbar";
 import "./index.css";
 
-const URL = "https://dummyjson.com/products";
-let query = "/";
-const limit = "";
+const URL = `https://dummyjson.com/products`;
+let query = "";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  function handleRemove(id) {
+    setProducts((prev) => prev.filter((product) => product.id !== id));
+  }
+
   async function fetchProducts() {
     try {
       setLoading(true);
-      const response = await fetch(`${URL}${query}${limit}`);
-      if (!response.ok) 
-        console.error(`Could not Fetch: ${response.status}`);
+      const response = await fetch(`${URL}${query}`);
+      if (!response.ok) console.error(`Could not Fetch: ${response.status}`);
       const data = await response.json();
 
       setProducts(data.products);
+      console.log(data);
     } catch (error) {
       console.error(error.message);
     } finally {
@@ -35,6 +39,7 @@ function App() {
       name={product.title}
       key={product.id}
       id={product.id}
+      onRemove={handleRemove}
       image={product.images}
       description={product.description}
       price={product.price}
@@ -42,7 +47,7 @@ function App() {
     />
   ));
 
-  const debounce = (fn, delay=100) => {
+  const debounce = (fn, delay = 100) => {
     let timerID = null;
 
     return (...args) => {
@@ -50,11 +55,11 @@ function App() {
       timerID = setTimeout(() => fn(...args), delay);
     };
   };
-  
+
   const onInput = debounce(makeAPICall, 500);
 
   function makeAPICall(event) {
-    query = "/search?q="
+    query = "/search?q=";
     query = query + event.target.value;
 
     fetchProducts();
@@ -62,7 +67,10 @@ function App() {
 
   return (
     <>
-      <input type="text" className="search-bar" placeholder="Search" onChange={onInput} />
+      <Navbar
+        onChange={onInput}
+        title="DummyProducts"
+      />
       {loading ? (
         <div className="loader"></div>
       ) : (
@@ -70,7 +78,6 @@ function App() {
           {productsList.map((product) => product)}
         </span>
       )}
-      
     </>
   );
 }

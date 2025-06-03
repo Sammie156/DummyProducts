@@ -10,11 +10,12 @@ function Product(props) {
         ))}
       </div>
       <p className="product-desc">{props.description}</p>
-
       <p className="product-price">${props.price}</p>
       <div className="buttons">
         <p className="product-cat">Category: {props.category}</p>
-        <button type="button">Remove Item</button>
+        <button type="button" onClick={() => props.onRemove(props.id)}>
+          Remove Item
+        </button>
       </div>
     </div>
   );
