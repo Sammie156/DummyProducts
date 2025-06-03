@@ -40,7 +40,18 @@ function App() {
     />
   ));
 
-  function onInputChange(event) {
+  const debounce = (fn, delay=100) => {
+    let timerID = null;
+
+    return (...args) => {
+      clearTimeout(timerID);
+      timerID = setTimeout(() => fn(...args), delay);
+    };
+  };
+  
+  const onInput = debounce(makeAPICall, 500);
+
+  function makeAPICall(event) {
     query = "/search?q="
     query = query + event.target.value;
 
@@ -49,7 +60,7 @@ function App() {
 
   return (
     <>
-      <input type="text" className="search-bar" placeholder="Search" onChange={onInputChange} />
+      <input type="text" className="search-bar" placeholder="Search" onChange={onInput} />
       {loading ? (
         <div className="loader"></div>
       ) : (
