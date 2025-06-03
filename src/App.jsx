@@ -14,6 +14,8 @@ function App() {
     try {
       setLoading(true);
       const response = await fetch(`${URL}${query}${limit}`);
+      if (!response.ok) 
+        console.error(`Could not Fetch: ${response.status}`);
       const data = await response.json();
 
       setProducts(data.products);
