@@ -33,6 +33,11 @@ div.image-container img {
   padding: 10px;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
 .product-cat {
   width: fit-content;
   margin: 2px 2px;
