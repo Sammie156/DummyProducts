@@ -1,6 +1,7 @@
 h2 {
   margin: 0px;
   font-size: 2.3rem;
+  font-variant-caps: all-small-caps;
 }
 
 .cross-button {

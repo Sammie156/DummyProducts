@@ -69,7 +69,7 @@ function App() {
     <>
       <Navbar
         onChange={onInput}
-        title="DummyProducts"
+        title="Dummy_Products"
       />
       {loading ? (
         <div className="loader"></div>
