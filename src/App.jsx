@@ -35,7 +35,7 @@ function App() {
       name={product.title}
       key={product.id}
       id={product.id}
-      image={product.images[0]}
+      image={product.images}
       description={product.description}
       price={product.price}
       category={product.category}

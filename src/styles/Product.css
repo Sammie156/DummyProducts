@@ -23,6 +23,16 @@
   height: 200px;
 }
 
+div.image-container {
+  overflow: scroll;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.image-container img {
+  padding: 10px;
+}
+
 .product-cat {
   width: fit-content;
   margin: 2px 2px;
@@ -42,7 +52,11 @@
 }
 
 .product-price {
+  position: relative;
+  left: 40%;
+  background-color: rgb(92, 91, 91);
   font-size: 1.5rem;
   text-align: center;
-  color: green;
+  width:min-content;
+  color: rgb(116, 227, 5);
 }
