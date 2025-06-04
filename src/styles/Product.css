@@ -23,7 +23,8 @@
 
 .image-container {
   text-align: center;
-  background: radial-gradient(farthest-corner at 90% 0%, rgb(56, 60, 63) 5%, #00000000 50%);
+  /* background: radial-gradient(farthest-corner at 90% 0%, rgb(56, 60, 63) 5%, #00000000 50%); */
+  background: linear-gradient(to bottom, transparent, white);
   border-radius: 18px;
 }
 
@@ -62,6 +63,7 @@
   margin-bottom: 24px;
   display: -webkit-box;
   -webkit-line-clamp: 3;     /* limit to 3 lines */
+  line-clamp: 3;             /* standard property for compatibility */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -79,9 +81,11 @@
   background-color: #6b50e0;
   width: max-content;
   border-radius: 10px;
-  padding: 0px 5px;
+  padding: 0px 5px 5px 5px;
   border-color: #8f6aff;
-  font-size: 1.2rem;
+  font-weight: 200;
+  color: #cdbefc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
 }
 
