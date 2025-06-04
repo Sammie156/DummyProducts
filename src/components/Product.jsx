@@ -11,7 +11,7 @@ function Product(props) {
           <p className="product-description">{props.description}</p>
         <div className="product-footer">
         <span className="product-category">{props.category}</span>
-          <button type="button" className="remove-btn" onClick={() => props.onRemove(props.id)}>Remove Button</button>
+          <button type="button" className="remove-btn" onClick={() => props.onRemove(props.id)}>Remove</button>
         </div>
         </div>
       </div>
