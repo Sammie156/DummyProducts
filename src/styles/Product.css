@@ -12,23 +12,12 @@
 }
 
 .product-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-20px);
 }
 
 .image-container {
   text-align: center;
   background: radial-gradient(farthest-corner at 100% 0%, rgb(56, 60, 63) 5%, #00000000 50%);
-  /* background: linear-gradient(to top, transparent, white); */
-}
-
-.image-container::after {
-  background: radial-gradient(farthest-corner at 50% 50%, rgb(56, 60, 63) 5%, #00000000 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.image-container:hover::after {
-  opacity: 1;
 }
 
 .product-info {
