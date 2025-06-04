@@ -23,8 +23,8 @@
 
 .image-container {
   text-align: center;
-  /* background: radial-gradient(farthest-corner at 90% 0%, rgb(56, 60, 63) 5%, #00000000 50%); */
-  background: linear-gradient(to bottom, transparent, white);
+  background: radial-gradient(farthest-corner at 90% 0%, rgb(56, 60, 63) 5%, #00000000 50%);
+  /* background: linear-gradient(to bottom, transparent, white); */
   border-radius: 18px;
 }
 
