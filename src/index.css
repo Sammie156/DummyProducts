@@ -33,7 +33,7 @@
 }
 
 .product-holder {
-  margin: 0px 40px;
+  margin: 0px 60px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
@@ -42,6 +42,6 @@
 }
 
 body {
-  background-color: #1c1c1c;
+  background-color: rgb(40, 44, 48);
   margin: 0px;
 }

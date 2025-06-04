@@ -2,22 +2,20 @@ import "../styles/Product.css";
 
 function Product(props) {
   return (
-    <div className="product-card">
-      <h3 className="product-name">{props.name}</h3>
-      <div className="image-container">
-        {props.image.map((image) => (
-          <img src={image} className="product-image" />
-        ))}
+    <>
+      <div className="product-card">
+        <div className="product-info">
+        <div className="image-container"><img src={props.image[0]} alt={props.name} className="product-image"/></div>
+          <h2 className="product-title">{props.name}</h2>
+          <h2 className="product-price">${props.price}</h2>
+          <p className="product-description">{props.description}</p>
+        <div className="product-footer">
+        <span className="product-category">{props.category}</span>
+          <button type="button" className="remove-btn" onClick={() => props.onRemove(props.id)}>Remove Button</button>
+        </div>
+        </div>
       </div>
-      <p className="product-desc">{props.description}</p>
-      <p className="product-price">${props.price}</p>
-      <div className="buttons">
-        <p className="product-cat">Category: {props.category}</p>
-        <button type="button" onClick={() => props.onRemove(props.id)}>
-          Remove Item
-        </button>
-      </div>
-    </div>
+    </>
   );
 }
 
