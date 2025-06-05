@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Product from "../components/Product";
-import "../index.css";
 
 const URL = `https://dummyjson.com/products`;
 let query = "";
@@ -21,7 +20,6 @@ function ProductPage() {
       const data = await response.json();
 
       setProducts(data.products);
-      console.log(data);
     } catch (error) {
       console.error(error.message);
     } finally {
@@ -33,47 +31,33 @@ function ProductPage() {
     fetchProducts();
   }, []);
 
-  let productsList = products.map((product) => (
-    <Product
-      name={product.title}
-      key={product.id}
-      id={product.id}
-      onRemove={handleRemove}
-      image={product.images}
-      description={product.description}
-      price={product.price}
-      category={product.category}
-    />
-  ));
-
-  const debounce = (fn, delay = 100) => {
-    let timerID = null;
-
-    return (...args) => {
-      clearTimeout(timerID);
-      timerID = setTimeout(() => fn(...args), delay);
-    };
-  };
-
-  const onInput = debounce(makeAPICall, 500);
-
-  function makeAPICall(event) {
-    query = "/search?q=";
-    query = query + event.target.value;
-
-    fetchProducts();
-  }
-
   return (
-    <>
+    <div className="min-h-screen bg-gray-100 px-4 py-8">
+      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+        Product Gallery
+      </h1>
+
       {loading ? (
-        <div className="loader"></div>
+        <div className="flex justify-center items-center h-64">
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
       ) : (
-        <span className="product-holder">
-          {productsList.map((product) => product)}
-        </span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+          {products.map((product) => (
+            <Product
+              name={product.title}
+              key={product.id}
+              id={product.id}
+              onRemove={handleRemove}
+              image={product.images}
+              description={product.description}
+              price={product.price}
+              category={product.category}
+            />
+          ))}
+        </div>
       )}
-    </>
+    </div>
   );
 }
 
