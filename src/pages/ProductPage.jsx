@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Product from "../components/Product";
 
-const URL = `https://dummyjson.com/products?limit=35`;
+const URL = `https://dummyjson.com/products?limit=32`;
 let query = "";
 
 function ProductPage() {

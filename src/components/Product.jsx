@@ -8,7 +8,7 @@ function Product(props) {
         <img
           src={props.image[0]}
           alt={props.name}
-          className="object-cover w-full h-full"
+          className="object-contain w-full h-full"
         />
       </div>
       <div className="p-2 flex flex-col gap-2">
@@ -27,14 +27,13 @@ function Product(props) {
           </span>
         </div>
 
-        <div
-          className="flex justify-between mt-4 gap-2"
-          onClick={() => alert("Bought!")}
-        >
+        <div className="flex justify-between mt-4 gap-2">
           <div className="inline">
             <button
               type="button"
               className="bg-[#f9fbfc] uppercase text-md font-semibold hover:bg-[#50e72ad6] rounded-xl mt-4 py-3 px-5"
+              onClick={() => console.log(`Added to Cart: ${props.name}`)
+              }
             >
               <IoMdCart />
             </button>
