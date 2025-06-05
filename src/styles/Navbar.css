@@ -1,13 +1,19 @@
 h2 {
   margin: 0px;
+  margin-left: 20px;
   font-size: 2.3rem;
   font-variant-caps: all-small-caps;
+  color: beige;
 }
 
 .cross-button {
   font-size: 2rem;
   margin-right: 5px;
   background-color: white;
+}
+
+.product-link {
+  margin-right: 20px;
 }
 
 .search-bar {
