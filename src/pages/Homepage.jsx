@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
+import HeroBanner from "../components/HeroBanner";
+import ProductSlide from "../components/ProductSlide";
 
 function Homepage() {
     return (
         <>
-            <h1>This is Homepage</h1>
+            <HeroBanner />
+            <ProductSlide />
+            <Footer />
         </>
     )
 }

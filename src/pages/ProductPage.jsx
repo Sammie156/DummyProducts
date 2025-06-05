@@ -5,7 +5,7 @@ import "../index.css";
 const URL = `https://dummyjson.com/products`;
 let query = "";
 
-function App() {
+function ProductPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -77,4 +77,4 @@ function App() {
   );
 }
 
-export default App;
+export default ProductPage;
