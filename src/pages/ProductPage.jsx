@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Product from "../components/Product";
 
-const URL = `https://dummyjson.com/products`;
+const URL = `https://dummyjson.com/products?limit=35`;
 let query = "";
 
 function ProductPage() {
@@ -32,8 +32,8 @@ function ProductPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+    <div className="min-h-screen bg-[#101115] px-4 py-8">
+      <h1 className="text-3xl font-bold text-center mb-8 text-[#ede3a5]">
         Product Gallery
       </h1>
 
@@ -42,7 +42,7 @@ function ProductPage() {
           <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-5 justify-items-center">
           {products.map((product) => (
             <Product
               name={product.title}
@@ -50,6 +50,7 @@ function ProductPage() {
               id={product.id}
               onRemove={handleRemove}
               image={product.images}
+              rating={product.rating}
               description={product.description}
               price={product.price}
               category={product.category}
