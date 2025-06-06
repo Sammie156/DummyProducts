@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Product from "../components/Product";
 
-const URL = `https://dummyjson.com/products?limit=32`;
+const URL = `https://dummyjson.com/products`;
 let query = "";
 
 function ProductPage() {
@@ -15,6 +15,8 @@ function ProductPage() {
   async function fetchProducts() {
     try {
       setLoading(true);
+      console.log(`${URL}${query}`);
+      
       const response = await fetch(`${URL}${query}`);
       if (!response.ok) console.error(`Could not Fetch: ${response.status}`);
       const data = await response.json();
@@ -31,11 +33,38 @@ function ProductPage() {
     fetchProducts();
   }, []);
 
+  const debounce = (fn, delay = 100) => {
+    let timerID = null;
+
+    return (...args) => {
+      clearTimeout(timerID);
+      timerID = setTimeout(() => fn(...args), delay);
+    };
+  };
+
+  const onInput = debounce(makeAPICall, 500);
+
+  function makeAPICall(event) {
+    query = "/search?q=";
+    query = query + event.target.value;
+
+    fetchProducts();
+  }
+
   return (
-    <div className="min-h-screen bg-[#101115] px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8 text-[#ede3a5]">
-        Product Gallery
-      </h1>
+    <div className="min-h-screen bg-[#0c0e14] px-4 py-8">
+      <div className="mb-5 flex justify-around">
+        <h1 className="inline text-3xl font-bold text-center text-[#ede3a5]">
+          Product Gallery
+        </h1>
+        <input
+          type="text"
+          onChange={onInput}
+          size="40"
+          placeholder="Search Items"
+          className="inline bg-[#2d354d] text-[#ede3a5] px-2 rounded-2xl"
+        />
+      </div>
 
       {loading ? (
         <div className="flex justify-center items-center h-64">

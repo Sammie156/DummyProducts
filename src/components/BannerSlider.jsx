@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const banners = [
   {
     title: "Summer Sale",
@@ -30,21 +32,23 @@ const BannerSlider = () => {
       <div className="w-full bg-gray-900 py-6 overflow-hidden">
         <div className="flex animate-slide-custom gap-6 whitespace-nowrap">
           {[...banners, ...banners].map((banner, i) => (
-            <div
-              key={i}
-              className="min-w-[300px] sm:min-w-[400px] rounded-lg overflow-hidden bg-white shadow-lg"
-            >
-              <img
-                src={banner.image}
-                alt={banner.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-bold text-gray-800 text-lg mb-1">
-                  {banner.title}
-                </h3>
-              </div>
-            </div>
+            <Link to="/construction">
+                <div
+                  key={i}
+                  className="min-w-[300px] sm:min-w-[400px] rounded-lg overflow-hidden bg-white shadow-lg"
+                >
+                  <img
+                    src={banner.image}
+                    alt={banner.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-bold text-gray-800 text-lg mb-1">
+                      {banner.title}
+                    </h3>
+                  </div>
+                </div>
+            </Link>
           ))}
         </div>
       </div>
