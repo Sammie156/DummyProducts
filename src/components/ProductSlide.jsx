@@ -32,12 +32,12 @@ function ProductSlide() {
         }
       `}</style>
 
-      <div className="w-full overflow-hidden bg-gray-100 py-4">
+      <div className="w-full overflow-hidden bg-[#101828] py-4">
         <div className="flex gap-6 px-4 whitespace-nowrap animate-slide-custom">
           {products.map((product, i) => (
             <div
               key={i}
-              className="inline-block min-w-[220px] bg-white rounded-lg shadow-md overflow-hidden"
+              className="inline-block min-w-[220px] bg-[#1e1f25] rounded-lg shadow-md overflow-hidden"
             >
               <img
                 src={product.thumbnail}
@@ -45,8 +45,8 @@ function ProductSlide() {
                 className="w-full h-40 object-cover"
               />
               <div className="p-3">
-                <h3 className="text-sm font-bold truncate">{product.title}</h3>
-                <p className="text-gray-600 text-sm truncate">{product.brand}</p>
+                <h3 className="text-sm font-bold truncate text-[#f3f4f6]">{product.title}</h3>
+                <p className="text-gray-100 text-sm truncate">{product.brand}</p>
                 <p className="text-blue-600 font-semibold">${product.price}</p>
               </div>
             </div>

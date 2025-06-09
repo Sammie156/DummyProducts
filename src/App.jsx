@@ -6,14 +6,14 @@ import ConstructionPage from "./pages/ConstructionPage";
 
 function App() {
   return (
-    <>
+      <div className="items-center">
       <Navbar title="Dummy_Products" />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/construction" element={<ConstructionPage />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

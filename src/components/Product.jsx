@@ -3,7 +3,7 @@ import { MdDeleteOutline } from "react-icons/md";
 
 function Product(props) {
   return (
-    <div className="bg-[#1e1f25] shadow-md transition-transform duration-100 hover:-translate-y-2 overflow-clip w-88 min-h-80 rounded-lg">
+    <div className="bg-[#1e1f25] shadow-md transition-transform duration-100 hover:-translate-y-2 overflow-clip md:w-64 lg:w-100 min-h-80 rounded-lg">
       <div className="h-60 w-full overflow-hidden">
         <img
           src={props.image[0]}
@@ -17,7 +17,6 @@ function Product(props) {
         <p className="text-sm text-gray-500 h-20 overflow-auto">
           {props.description}
         </p>
-
         <div className="flex justify-between items-center mt-2">
           <span className="text-[#efefef] text-lg font-bold">
             ${props.price}
