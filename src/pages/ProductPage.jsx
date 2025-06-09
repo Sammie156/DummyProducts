@@ -62,7 +62,7 @@ function ProductPage() {
           onChange={onInput}
           size="40"
           placeholder="Search Items"
-          className="inline bg-[#2d354d] text-[#ede3a5] px-2 rounded-2xl"
+          className="inline bg-[#2d354d] text-2xl text-center text-[#ede3a5] px-2 sm:pb-10 rounded-2xl"
         />
       </div>
 
