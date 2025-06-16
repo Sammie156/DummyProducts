@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Product from "../components/Product";
 
-const URL = `http://localhost:5000/api/products`;
+const URL = `https://dummyproducts.onrender.com/api/products`;
 let query = "";
 
 function ProductPage() {
