@@ -28,7 +28,7 @@ function ProductSlide() {
         }
 
         .animate-slide-custom {
-          animation: slide 20s linear infinite;
+          animation: slide 30s linear infinite;
         }
       `}</style>
 

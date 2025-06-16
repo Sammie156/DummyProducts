@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Product from "../components/Product";
 
-const URL = `https://dummyjson.com/products`;
+const URL = `http://localhost:5000/api/products`;
 let query = "";
 
 function ProductPage() {
@@ -16,12 +16,12 @@ function ProductPage() {
     try {
       setLoading(true);
       console.log(`${URL}${query}`);
-      
+
       const response = await fetch(`${URL}${query}`);
       if (!response.ok) console.error(`Could not Fetch: ${response.status}`);
       const data = await response.json();
 
-      setProducts(data.products);
+      setProducts(data);
     } catch (error) {
       console.error(error.message);
     } finally {
