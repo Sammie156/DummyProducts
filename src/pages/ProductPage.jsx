@@ -1,26 +1,25 @@
 import { useState, useEffect } from "react";
 import Product from "../components/Product";
 
-let query = "";
-const URL = `https://dummyproducts.onrender.com/api/products?search=${query}`;
+const URL = `https://dummyproducts.onrender.com/api`;
 
 function ProductPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   function handleRemove(id) {
     setProducts((prev) => prev.filter((product) => product.id !== id));
   }
 
-  async function fetchProducts() {
+  async function fetchProducts(query = "") {
     try {
       setLoading(true);
-      console.log(`${URL}${query}`);
-
-      const response = await fetch(`${URL}`);
+      const response = await fetch(
+        `${URL}/products?search=${encodeURIComponent(query)}`
+      );
       if (!response.ok) console.error(`Could not Fetch: ${response.status}`);
       const data = await response.json();
-
       setProducts(data);
     } catch (error) {
       console.error(error.message);
@@ -30,26 +29,22 @@ function ProductPage() {
   }
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts(searchTerm);
+  }, [searchTerm]);
 
-  const debounce = (fn, delay = 100) => {
-    let timerID = null;
-
+  const debounce = (fn, delay = 500) => {
+    let timerID;
     return (...args) => {
       clearTimeout(timerID);
       timerID = setTimeout(() => fn(...args), delay);
     };
   };
 
+  const makeAPICall = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   const onInput = debounce(makeAPICall, 500);
-
-  function makeAPICall(event) {
-    query = "";
-    query = query + event.target.value;
-
-    fetchProducts();
-  }
 
   return (
     <div className="min-h-screen bg-[#0c0e14] px-4 py-8">
