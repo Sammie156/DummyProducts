@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Product from "../components/Product";
 
-const URL = `https://dummyproducts.onrender.com/api/products`;
 let query = "";
+const URL = `https://dummyproducts.onrender.com/api/products?search=${query}`;
 
 function ProductPage() {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,7 @@ function ProductPage() {
       setLoading(true);
       console.log(`${URL}${query}`);
 
-      const response = await fetch(`${URL}${query}`);
+      const response = await fetch(`${URL}`);
       if (!response.ok) console.error(`Could not Fetch: ${response.status}`);
       const data = await response.json();
 
@@ -45,7 +45,7 @@ function ProductPage() {
   const onInput = debounce(makeAPICall, 500);
 
   function makeAPICall(event) {
-    query = "/search?q=";
+    query = "";
     query = query + event.target.value;
 
     fetchProducts();
