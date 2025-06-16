@@ -47,18 +47,22 @@ function ProductPage() {
   const onInput = debounce(makeAPICall, 500);
 
   return (
-    <div className="min-h-screen bg-[#0c0e14] px-4 py-8">
-      <div className="mb-5 justify-around grid grid-cols-1 sm:grid-cols-2">
-        <h1 className="inline text-3xl font-bold text-center text-[#ede3a5]">
+    <div className="min-h-screen bg-[#0c0e14] px-4 py-8 text-[#ede3a5]">
+      <div className="flex flex-col items-center space-y-6 mb-10">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-center tracking-tight drop-shadow-md">
           Product Gallery
         </h1>
-        <input
-          type="text"
-          onChange={onInput}
-          size="40"
-          placeholder="Search Items"
-          className="inline bg-[#2d354d] text-2xl text-center text-[#ede3a5] px-2 sm:pb-10 rounded-2xl"
-        />
+        <div className="relative w-full max-w-md">
+          <input
+            type="text"
+            onChange={onInput}
+            placeholder="Search for a product..."
+            className="w-full p-4 pl-12 text-lg rounded-2xl bg-[#2d354d] placeholder-[#b4b496] text-[#ede3a5] shadow-lg focus:outline-none focus:ring-2 focus:ring-[#ede3a5]"
+          />
+          <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-xl text-[#ede3a5]">
+            🔍
+          </span>
+        </div>
       </div>
 
       {loading ? (
@@ -66,7 +70,7 @@ function ProductPage() {
           <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-y-5 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-4 justify-items-center">
           {products.map((product) => (
             <Product
               name={product.title}
