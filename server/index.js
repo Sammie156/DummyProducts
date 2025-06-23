@@ -2,15 +2,17 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import Product from "./models/Product.js"; // Adjust path if needed
+import Product from "./models/Product.js";
+import authRoutes from "./routes/auth.js";
 
 dotenv.config();
 
-const app = express();
+const app = express(); 
 const PORT = 5000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); 
+app.use("/api/auth", authRoutes);
 
 // MongoDB Connection
 mongoose
@@ -37,7 +39,7 @@ app.get("/api/products", async (req, res) => {
     };
   }
 
-  console.log("🔍 Mongo Query:", query); // Debugging
+  console.log("🔍 Mongo Query:", query);
 
   try {
     const products = await Product.find(query);
