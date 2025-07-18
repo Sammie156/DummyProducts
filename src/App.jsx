@@ -1,9 +1,10 @@
 import { Routes, Route, Navigate, BrowserRouter as Router } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import ProductPage from "./pages/ProductPage";
-import LoginPage from "./pages/LoginPage";
+import SignInPage from "./pages/SignInPage";
 import Navbar from "./components/Navbar";
 import { isLoggedIn } from "./auth"; // should return true/false based on localStorage or JWT
+import SignupPage from "./pages/SignUpPage";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route
             path="/login"
             element={
-              isLoggedIn() ? <Navigate to="/products" replace /> : <LoginPage />
+              isLoggedIn() ? <Navigate to="/products" replace /> : <SignInPage />
             }
           />
           <Route
@@ -25,6 +26,7 @@ function App() {
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/register" element={<SignupPage />} />
         </Routes>
       </Router>
     </div>

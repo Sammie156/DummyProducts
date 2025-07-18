@@ -16,6 +16,7 @@ app.use("/api/auth", authRoutes);
 
 // MongoDB Connection
 mongoose
+// eslint-disable-next-line no-undef
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -51,3 +52,5 @@ app.get("/api/products", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+app.use("/uploads", express.static("uploads"));
